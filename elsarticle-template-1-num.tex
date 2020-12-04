@@ -1,0 +1,478 @@
+%% This is file `elsarticle-template-1-num.tex',
+%%
+%% Copyright 2009 Elsevier Ltd
+%%
+%% This file is part of the 'Elsarticle Bundle'.
+%% ---------------------------------------------
+%%
+%% It may be distributed under the conditions of the LaTeX Project Public
+%% License, either version 1.2 of this license or (at your option) any
+%% later version.  The latest version of this license is in
+%%    http://www.latex-project.org/lppl.txt
+%% and version 1.2 or later is part of all distributions of LaTeX
+%% version 1999/12/01 or later.
+%%
+%% Template article for Elsevier's document class `elsarticle'
+%% with numbered style bibliographic references
+%%
+%% $Id: elsarticle-template-1-num.tex 149 2009-10-08 05:01:15Z rishi $
+%% $URL: http://lenova.river-valley.com/svn/elsbst/trunk/elsarticle-template-1-num.tex $
+%%
+
+\documentclass[preprint,review,3p,12pt]{elsarticle}
+
+\usepackage{siunitx}
+
+%% Used to allow supplementary figure naming
+\usepackage{newfloat}
+\DeclareFloatingEnvironment[name={Supplementary Figure}]{suppfigure}
+\DeclareFloatingEnvironment[name={Supplementary Table}]{supptable}
+
+
+\usepackage{caption}
+\captionsetup[figure]{font=scriptsize,labelfont=scriptsize}
+\captionsetup[suppfigure]{font=scriptsize,labelfont=scriptsize}
+\captionsetup[supptable]{font=scriptsize,labelfont=scriptsize}
+
+% For tidy references to figures
+\usepackage[colorlinks]{hyperref}
+\usepackage[nameinlink,noabbrev]{cleveref}
+
+%% Use the option review to obtain double line spacing
+%% \documentclass[preprint,review,12pt]{elsarticle}
+
+%% Use the options 1p,twocolumn; 3p; 3p,twocolumn; 5p; or 5p,twocolumn
+%% for a journal layout:
+%% \documentclass[final,1p,times]{elsarticle}
+%% \documentclass[final,1p,times,twocolumn]{elsarticle}
+%% \documentclass[final,3p,times]{elsarticle}
+%% \documentclass[final,3p,times,twocolumn]{elsarticle}
+%% \documentclass[final,5p,times]{elsarticle}
+%% \documentclass[final,5p,times,twocolumn]{elsarticle}
+
+%% The graphicx package provides the includegraphics command.
+\usepackage{graphicx}
+%% The amssymb package provides various useful mathematical symbols
+\usepackage{amssymb}
+%% The amsthm package provides extended theorem environments
+%% \usepackage{amsthm}
+
+%% The lineno packages adds line numbers. Start line numbering with
+%% \begin{linenumbers}, end it with \end{linenumbers}. Or switch it on
+%% for the whole article with \linenumbers after \end{frontmatter}.
+\usepackage{lineno}
+
+%% natbib.sty is loaded by default. However, natbib options can be
+%% provided with \biboptions{...} command. Following options are
+%% valid:
+
+%%   round  -  round parentheses are used (default)
+%%   square -  square brackets are used   [option]
+%%   curly  -  curly braces are used      {option}
+%%   angle  -  angle brackets are used    <option>
+%%   semicolon  -  multiple citations separated by semi-colon
+%%   colon  - same as semicolon, an earlier confusion
+%%   comma  -  separated by comma
+%%   numbers-  selects numerical citations
+%%   super  -  numerical citations as superscripts
+%%   sort   -  sorts multiple citations according to order in ref. list
+%%   sort&compress   -  like sort, but also compresses numerical citations
+%%   compress - compresses without sorting
+%%
+%% \biboptions{comma,round}
+
+% \biboptions{}
+
+\journal{journal}
+
+\begin{document}
+
+\begin{frontmatter}
+
+%% Title, authors and addresses
+
+\title{Toward reproducible, scalable, and robust data analysis across multiplex tissue imaging platforms
+}
+
+%% use the tnoteref command within \title for footnotes;
+%% use the tnotetext command for the associated footnote;
+%% use the fnref command within \author or \address for footnotes;
+%% use the fntext command for the associated footnote;
+%% use the corref command within \author for corresponding author footnotes;
+%% use the cortext command for the associated footnote;
+%% use the ead command for the email address,
+%% and the form \ead[url] for the home page:
+%%
+%% \title{Title\tnoteref{label1}}
+%% \tnotetext[label1]{}
+%% \author{Name\corref{cor1}\fnref{label2}}
+%% \ead{email address}
+%% \ead[url]{home page}
+%% \fntext[label2]{}
+%% \cortext[cor1]{}
+%% \address{Address\fnref{label3}}
+%% \fntext[label3]{}
+
+
+%% use optional labels to link authors explicitly to addresses:
+%% \author[label1,label2]{<author name>}
+%% \address[label1]{<address>}
+%% \address[label2]{<address>}
+
+\author{Erik Ames Burlingame$^{1,2}$, Jennifer Eng$^{2}$, Guillaume Thibault$^{2}$, \\ Koei Chin$^{2,3}$, Joe W. Gray$^{2,3}$, Young Hwan Chang$^{1,2,3}$}
+
+\address{$^{1}$Computational Biology Program, Department of Biomedical Engineering, Oregon Health and Science University, Portland, OR, USA}
+\address{$^{2}$OHSU Center for Spatial Systems Biomedicine, Department of Biomedical Engineering, Oregon Health and Science University, Portland, OR, USA}
+\address{$^{3}$Knight Cancer Institute, Oregon Health and Science University, Portland, OR, USA}
+\begin{abstract}
+%% Text of abstract
+The emergence of megascale single-cell multiplex tissue imaging (MTI) datasets necessitates reproducible, scalable, and robust tools for cell phenotyping and spatial analysis. We developed open-source, 
+graphics processing unit (GPU)-accelerated tools for intensity normalization, phenotyping, and microenvironment characterization. We deploy the toolkit on a human breast cancer (BC) tissue microarray stained by cyclic immunofluorescence and benchmark our cell phenotypes against a published MTI dataset. Finally, we demonstrate an integrative analysis revealing BC subtype-specific features.
+\end{abstract}
+
+\begin{keyword}
+multiplex tissue imaging \sep 
+GPU data science \sep breast cancer
+%% keywords here, in the form: keyword \sep keyword
+
+%% MSC codes here, in the form: \MSC code \sep code
+%% or \MSC[2008] code \sep code (2000 is the default)
+
+\end{keyword}
+
+\end{frontmatter}
+
+%%
+%% Start line numbering here if you want
+%%
+\linenumbers
+
+%% main text
+\section{MAIN}
+\label{S:1}
+Multiplex tissue imaging (MTI) methods like cyclic  immunofluorescence (CyCIF) \cite{cycif2018, cmif2020}, CODEX \cite{codex2018}, multiplex immunohistochemistry (mIHC) \cite{mIHC2017}, imaging mass cytometry (IMC) \cite{imc2014}, and multiplex ion beam imaging \cite{mibi2014} enable measurements of the expression and spatial distribution of tens of markers in tissues, and have facilitated our understanding of the interactions and relationships among distinct cell types in diverse tissue microenvironments. Nevertheless, for MTI to reach its full potential as a research paradigm, numerous computational challenges must be overcome, including 1) reproducible normalization of single-cell intensity measurements to enable comparison of measurements within and between samples; 2) robust cell phenotyping at megascale to enable comparison--and soon compilation--of MTI datasets from different platforms; and 3) the development of insightful spatial features to characterize the microenvironment of the tissue or disease of interest, and so enable discrimination between tissues that vary over important clinical parameters.\\
+
+To address these challenges, we present 1) a broadened application of our data-intrinsic normalization method \cite{Chang2020}, which leverages the mutually exclusive expression pattern of marker pairs in MTI stain panels to estimate normalization factors without subjective and time-consuming manual gating; 2) a distributed and graphics processing unit (GPU)-accelerated implementation of PhenoGraph \cite{Levine2015}, the popular, graph-based algorithm for subpopulation detection in high-dimensional single-cell data; and 3) an integrative analysis using this toolkit on $\sim$1.3 million cells from a 180-sample, pan-subtype human breast cancer (BC) tissue microarray (TMA) dataset (\autoref{fig:suppfig1}A-C) stained by CyCIF using a marker panel that characterizes tumor, immune, and stromal compartments (\autoref{fig:fig1}, \autoref{fig:suppfig1}D). Through consideration of both tissue composition and architecture, we identify features independent from hormone receptor (HR) and human epidermal growth factor receptor 2 (HER2) expression which discriminate between the canonical BC subtypes.\\
+
+For RESTORE normalization \cite{Chang2020} of each TMA core, we leverage the fact that tumor, immune, and stromal cells exhibit mutually exclusive expression of cell type-specific markers, and use a graph-based clustering to define positive and negative cells and normalization factors (\autoref{fig:suppfig2}A, \autoref{tab:mepairs}, see METHODS). When the raw expression vectors of all cells across TMAs are embedded by $t$-stochastic neighbor embedding ($t$-SNE) \cite{tsne2008}, cells are segregated based on TMA source (\autoref{fig:suppfig2}B, left), mainly due to batch effect and in part due to subtype bias within TMAs (\autoref{fig:suppfig1}). Following normalization, shared cell types between TMAs are co-embedded (\autoref{fig:suppfig2}B, right) and immune, tumor, and stromal cells are segregated (\autoref{fig:suppfig2}C), a validation of the normalization process.\\
+
+To define cell types among the $\sim$1.3 million cells in the normalized feature table, we first attempted to use the central processing unit (CPU)-based version of the widely-used algorithm PhenoGraph \cite{Levine2015}, but found it to be inefficient at this scale. To overcome this computational bottleneck, we re-implemented PhenoGraph to be executable on GPUs. Using the Python libraries RAPIDS \cite{cuml2020} and CuPy \cite{cupy2017} to parallelize and accelerate several of PhenoGraph's computations (see METHODS), we observed multiple orders of magnitude improvement in the algorithm's speed (\autoref{fig:fig2}A), without sacrificing clustering quality (\autoref{fig:fig2}B). Our PhenoGraph implementation identified diverse tumor, immune, and stromal cell types across tissues and BC subtypes (\autoref{fig:fig2}C and \autoref{fig:fig2}D). To define phenotypes shared across tissues, metaclusters of similar phenotypes were aggregated based on the hierarchical clustering of mean phenotype expression. While tissues from all BC subtypes contained similar populations of immune, stromal, and endothelial cells, differences between BC subtypes were largely driven by variable tumor cells expression of luminal and basal cytokeratins, HER2, and the hormone receptors ER and PgR \cite{jackson_single-cell_2020}. We further assessed the robustness of our detected cell phenotypes by either subsampling tissue cores (\autoref{fig:suppfig3}A-C), or by applying $\pm20\%$ noise to normalization factors for each marker for each core (\autoref{fig:suppfig3}D) and found that phenotypes are detected as they are sampled and are robust to minor variability in normalization factors.\\
+
+With the growth of MTI in the cancer research and translational communities, there is an acute need for robust and integrative analyses of MTI data across platforms and cohorts \cite{htan2020}. In a step toward addressing that need, we validated our identified cell types through comparison with a recently published survey of BC by IMC \cite{jackson_single-cell_2020}. While the total number of cells from each BC subtype varied between the Basel (IMC) and OHSU (CyCIF) cohorts (\autoref{fig:fig3}A), there was substantial overlap between the marker panels used for each MTI platform (\autoref{fig:fig3}B). By aligning the cell phenotypes independently detected by PhenoGraph in each cohort (\autoref{fig:fig3}C), we found highly-correlated clusters for stromal, immune, basal, and proliferating cell types, among others (\autoref{fig:fig3}D), suggesting that shared cell types could be matched across cohorts and MTI platforms, a necessary step for data integration. We note that differences between cohort cell types may reflect the differences between cohort composition with respect to BC subtype. Consistent between cohorts and platforms, tumor cells differed more between samples than did immune, stromal, and endothelial cells \autoref{fig:suppfig4}. \\
+
+Although BC is appreciated as a genetically and morphologically heterogeneous disease, its clinical subtyping is based on the expression of relatively few markers—in particular, tumor cell expression of the hormone receptors for estrogen and progesterone (ER and PgR, respectively, or HR, collectively), and human epidermal growth factor 2 (HER2)—which is insufficient to explain differences in treatment response within each subtype \cite{bcreview2015}. Recent studies using MTI to interrogate intact BC tissues have found that the spatial contexture of the BC microenvironment can augment our ability to predict clinical outcome \cite{keren2018, jackson_single-cell_2020}. However, because these studies have either ignored features which differentiate between receptor expression-based BC subtypes beyond the expression of the receptors themselves, or focused on a single BC subtype, here we focused on compositional and spatial features which differentiate between BC subtypes. \\
+
+At the composition level, we first considered the tumor cell differentiation states of BC subtypes through their expression of luminal and basal cytokeratins (CKs). While CK+ cells in HR-/HER2+, HR+/HER2-, and HR+/HER2+ tissues primarily expressed luminal CKs 19, 8, and 7, CK+ cells in TN tissues exhibited significantly greater differentiation state heterogeneity (\autoref{fig:fig4}A), as they expressed many different combinations of luminal and basal cytokeratins (\autoref{fig:fig4}B). This differentiation state heterogeneity is consistent with the genetic and histological heterogeneity of triple negative BC (TNBC) described in other studies \cite{haupt2010, tnbc2016}. We next determined the composition of each tissue core with respect to the cell metaclusters we defined above. Hierarchical clustering of cores based on their cell metacluster densities highlighted the broad variability of cellular composition within and between BC subtypes (\autoref{fig:fig5}A-B). When the cell metaclusters were further aggregated into immune, stromal, and tumor cell types (see METHODS), we found the HR+HER2- tissues to have lower overall immune cell density than the other BC subtypes, and no differences in stromal or tumor cell density between subtypes (\autoref{fig:fig5}C). \\
+
+Recognizing that cell density measurements fail to capture the organization of cells in each tissue, we next characterized the spatial architectures of BC subtypes by building cell neighborhood graphs for each tissue. Given the recent evidence that the quantity and diversity of BC tumor cell interactions with other cell types can inform disease outcome \cite{keren2018,jackson_single-cell_2020}, we first identified the neighboring cells to each tumor cell and compared the composition of tumor cell neighborhoods across BC subtypes (\autoref{fig:fig6}A). Though most tumor cell interactions ($\sim$70-80\%) are with other tumor cells typical to their BC subtype, we observed increased tumor-stromal interaction in the HR+HER2- subtype. When considering tissues that contain an appreciable population of stromal cells (\autoref{fig:fig6}B), we confirmed that there was significantly more stromal mixing with tumor cells in HR+HER2- tissues (\autoref{fig:fig6}C). Importantly, stromal mixing can vary widely between tissues in spite of their similar stromal density (\autoref{fig:fig6}D), highlighting the importance of the spatial context that is preserved in intact tissues. Since malignant epithelial cells can suppress fibroblast maturation and thus promote fibroblast aromatase activity \cite{bulun2012}, ER+HER2- tumors likely favor more from proximal fibroblasts as a source of growth-inducing estrogen than other BC subtypes, and may even act to maintain tumor microenvironments with high stromal mixing \cite{brechbuhl2017}. \\
+
+We reasoned that differences in tumor-stromal interaction might translate into detectable differences between BC subtypes based on their tumor architectures alone. To characterize the tumor architecture of each tissue, we constructed tumor architecture graphs over which we computed the closeness centrality for each tumor cell, which quantifies the relative closeness of that tumor cell to all other tumor cells in the tissue (\autoref{fig:fig7}A). Consistent with the stromal mixing trend observed above, tumor cells in HR+HER2- tissues tended to have increased closeness centrality compared to tumor cells from the other BC subtypes (\autoref{fig:fig7}B), which is in part a reflection of HR+HER2- tumor cell nests tending to be separated by narrower streams of stromal cells than tumor nests in tissues from other BC subtypes (\autoref{fig:fig6}D). In summary, by analyzing BC tissues with spatially resolved MTI, we have identified inter- and intra-cell phenotype interactions which can be leveraged to help discriminate between canonical BC subtypes on a basis other than receptor expression. \\
+
+Finally, we recognize that our understanding of big imaging data benefits from its visualization, so we developed a simple Jupyter wrapper for napari \cite{napari_0_3_0}—the fast, interactive multi-dimensional image viewer for Python—which makes exploration, analysis, and interpretation of multiplex imaging data more tractable. \\
+
+This work is motivated by an understanding that the spatial context of the tumor microenvironment in intact cancer tissues enables a more granular definition of disease, and—we hope—the design of more personalized and effective treatments. With spatially-resolved MTI, our analysis makes clear that the cellular composition of BC tissue can belie important aspects of its spatial architecture. Ongoing work involves validating these findings in a cohort with more extensive clinical annotation to assess their significance to disease outcome between and within BC subtypes. While BC cell phenotypes and architectural features we have derived will be assets to future BC studies, our generic toolkit can be used stand-alone or integrated with existing toolkits \cite{histocat2017} to improve the efficiency and reproducibility of analytics for any single-cell measurement platform.
+
+\section{METHODS}
+\subsection{Tissue preparation and CyCIF}
+Tissue microarray (TMA) preparation: The slides were baked overnight in an oven at 55$^\circ$C (Robbin Scientific, Model 1000) and an additional 30 minutes at 65$^\circ$C (Clinical Scientific Equipment, NO. 100). Tissues were deparaffinized with xylene and rehydrated with graded ethanol baths. Two step antigen retrieval was performed in the Decloaking Chamber (Biocare Medical) using the following settings: set point 1 (SP1), 125$^\circ$C, 30 seconds; SP2: 90$^\circ$C, 30 seconds; SP limit: 10$^\circ$C. Slides were further incubated in hot pH 9 buffer for 15 minutes. Slides were then washed in two brief changes of diH2O ($\sim$2 seconds) and once for 5 minutes in 1x phosphate buffered saline (PBS), pH 7.4 (Fisher, BP39920). Sections were blocked in 10\% normal goat serum (NGS, Vector S-1000), 1\% bovine serum albumin (BSA, Sigma A7906) in PBS for 30 minutes at 20$^\circ$C in a humid chamber, followed by PBS washes. Primary antibodies were diluted in 5\% NGS, 1\% BSA in 1X PBS and applied overnight at 4$^\circ$C in a humid chamber, covered with plastic coverslips (IHC World, IW-2601). Following overnight incubation, tissues were washed 3 $\times$ 10 min in 1X PBS. Coverslips (Corning; 2980-243 or 2980-245) were mounted in Slowfade Gold plus DAPI mounting media (Life Technologies, S36938).
+
+\subsubsection{Fluorescence microscopy}
+Fluorescently stained slides were scanned on the Zeiss AxioScan.Z1 (Zeiss, Germany) with a Colibri 7 light source (Zeiss). The filter cubes used for image collection were DAPI (Zeiss 96 HE), Alexa Fluor 488 (AF488, Zeiss 38 HE), AF555 (Zeiss 43 HE), AF647 (Zeiss 50) and AF750 (Chroma 49007 ET Cy7). The exposure time was determined individually for each slide and stain to ensure good dynamic range but not saturation. Full tissue scans were taken with the 20x objective (Plan-Apochromat 0.8NA WD=0.55, Zeiss) and stitching was performed in Zen Blue image acquisition software(Zeiss).
+
+\subsubsection{Quenching fluorescence signal}
+After successful scanning, slides were soaked in 1x PBS for 10–30 minutes in a glass Coplin jar, waiting until glass coverslip slid off without agitation. Quenching solution containing 20 mM sodium hydroxide (NaOH) and 3\% hydrogen peroxide (H2O2) in 1x PBS was freshly prepared from stock solutions of 5 M NaOH and 30\% H2O2, and each slide placed in 10 ml quenching solution. Slides were quenched under incandescent light, for 30 minutes for FFPE tissue slides. Slides were then removed from chamber with forceps and washed 3 x 2 min in 1x PBS. The next round of primary antibodies was applied, diluted in blocking buffer as previously described, and imaging and quenching were repeated over ten rounds for FFPE tissue slides.
+
+
+\subsection{Cell segmentation and feature extraction}
+Cell segmentation and feature extraction were performed as previously described \cite{cmif2020}.
+
+\subsection{Intensity normalization}
+Normalization factors for single-cell mean intensities were computed as previously described \cite{Chang2020} using the putative mutually-exclusive marker pairs in \autoref{tab:mepairs}. Normalization factors are computed for each pair of reference and mutually-exclusive markers, and the median of these factors is used to normalize each raw single-cell mean intensity vector for each CyCIF marker and each TMA core. Raw intensities were normalized using the equation:
+\begin{equation}
+\label{eq:norm}
+\hat{\mathbf{x}}_{i,j} = \frac{\mathbf{x}_{i,j}-min(\mathbf{x}_{i,j})}{\phi_{i,j}-min(\mathbf{x}_{i,j})},
+\end{equation}
+where $\hat{\mathbf{x}}_{i,j}$ and $\mathbf{x}_{i,j}$ are the normalized and raw single-cell mean intensity vectors for CyCIF marker $i$ for all cells in tissue core $j$, respectively, and $\phi_{i,j}$ is the corresponding normalization factor determined as described above. Therefore, cells with a normalized intensity greater than 1 are considered to be above the background intensity level.
+
+\subsection{Single-cell phenotyping}
+\subsubsection{GPU acceleration of PhenoGraph}
+Given a cell-by-feature dataframe, the PhenoGraph algorithm \cite{Levine2015} consists of two primary steps: 1) defining a $k$-nearest neighbor graph over all cells that is then refined by computing the Jaccard similarity measure over graph edges, and 2) partitioning the graph into discrete cell phenotypes through optimization of partition modularity, such that cells in the same partition are more connected to each other than to cells of another partition. In the official version of PhenoGraph (\url{https://github.com/dpeerlab/PhenoGraph}), these steps are implemented using a combination of Python and C++ libraries that execute on CPU. In \autoref{fig:fig2}A, we show that PhenoGraph execution time increases exponentially with increasing dataset size, taking approximately 3 hours to process a synthetic 1 million cell-by-10 feature dataset. Most MTI datasets measure tens of features, but CPU-based PhenoGraph was unable to fully process the 1 million cell-by-30- and 50-feature synthetic datasets in the 8 hours allotted for the experiment. We see such computational bottlenecks--which would be even further constricted when compiling multiple MTI or cytometry datasets--as a major obstacle to current studies and future meta-studies of high-dimensional MTI datasets, where rapid iteration will be essential to the validation of cross-platform data integration techniques. \\
+
+Owing to recent advances in GPU computing and its ever-broadening adoption in machine learning research, there now exist accelerated GPU-based analogs of many Python scientific computing libraries \cite{cupy2017,cuml2020}, including those with which the CPU-based PhenoGraph is implemented. Some of these libraries even allow computation to be distributed across multiple GPUs \cite{cuml2020,dask}. We employed two of such libraries, CuPy \cite{cupy2017} and RAPIDS \cite{cuml2020}, to accelerate each step of the PhenoGraph algorithm and enable distributed computing over multiple GPUs. With our GPU-based implementation, it is now possible to phenotype cells in megascale cytometry datasets in seconds-to-minutes rather than hours-to-days, and without subsampling. Installation instructions and additional details about our implementation can be found at \url{https://gitlab.com/eburling/grapheno}.\\
+
+\subsubsection{Phenotyping and metacluster annotation}
+Apart from the benchmarking experiment described in \autoref{fig:fig2}A, we use only our GPU-based implementation of PhenoGraph throughout this work. Single-cell phenotypes were defined based on single-cell mean intensity for the 35-marker CyCIF panel (\autoref{fig:suppfig1}B). Prior to application of PhenoGraph, data were 99.9th-percentile normalized and arcsin transformed (cofactor = 5). Following \cite{jackson_single-cell_2020}, PhenoGraph was parameterized (k=$40$) to over-cluster the data and detect rare cell types. PhenoGraph clustering was followed by aggregation of phenotypes into metaclusters based on hierarchical clustering of mean cluster intensity and to preserve known biological variation \autoref{fig:fig2}. \\
+
+\subsubsection{Robustness of derived cell phenotypes}
+To assess PhenoGraph clustering robustness to sampling shift, PhenoGraph clusters were derived using random subsets of tissues of varying cardinality, from $10\%$ to $90\%$ of all tissues, and compared the z-scored mean marker intensities of the PhenoGraph-derived clusters from the full reference dataset and each subset using pairwise Pearson's correlation. Even with heavy subsampling, the median of the maximum correlations between matching clusters from reference-to-sample comparisons held at ~0.75 (\autoref{fig:suppfig3}A), indicating that we are defining a robust core set of cell phenotypes. Indeed, the major variation between reference and subsample clusters appeared to be sample-specific tumor cell phenotypes from the tissues held out from each subsample (\autoref{fig:suppfig3}B-C), suggesting that PhenoGraph defines robust cell phenotypes that are shared across tissues and is capable of detecting new phenotypes as they are added to the dataset. To assess the robustness of our derived phenotypes to variability in normalization, we also simulated $\pm20\%$ measurement noise by multiplying the normalized cell intensity vectors for each tissue and marker by a scaling factor drawn uniformly at random from the range [0.8,1.2] and compared the z-scored mean marker intensities of the PhenoGraph-derived clusters from the clean reference and noisy datasets using pairwise Pearson's correlation. Even with these significant perturbations to the intensity profiles of cells, the median of the maximum correlations between matching clean and noisy clusters held above 0.8 (\autoref{fig:suppfig3}D), indicating cluster robustness to differentials in preanalytical variables like tissue fixation or autofluorescence which can affect measured IF intensity across a TMA.
+
+\subsection{t-stochastic neighbor embedding ($t$-SNE)}
+To enable visualization, the full 35-feature single-cell dataset was reduced to 2 dimensions using the RAPIDS implementation of $t$-SNE \cite{tsne2008} with default parameters except perplexity = 60. Prior to $t$-SNE processing, data were 99.9th-percentile normalized and arcsin transformed (cofactor = 5). Plots containing $t$-SNE embeddings of the full $\sim$1.3 million-cell dataset were created using Datashader (\url{https://github.com/holoviz/datashader}).
+
+\subsection{Cross-platform cell phenotype validation}
+The IMC dataset \cite{jackson_single-cell_2020} used for our cell phenotype validation experiment was retrieved from \url{https://zenodo.org/record/3518284}. To make a fair comparison between the OHSU (CyCIF) and Basel (IMC) datasets, we independently ran PhenoGraph on each using the same parameters ($k$=40, Louvain partitioning) and only the overlapping features between IMC and CyCIF stain panels (\autoref{fig:fig3}B). The phenotypes derived from each platform were then cross-correlated to identify inter-platform phenotype matches. Using the clustermap function from seaborn \cite{seaborn2020}, the cross-correlation matrix was then hierarchically clustered with Ward linkage and used to sort the matching clusters between the two cohort heatmaps.
+
+\subsection{Tissue composition analyses}
+\subsubsection{Epithelial differentiation heterogeneity}
+Cells from each core were labeled as positive for each cytokeratin if their mean intensity was greater than the normalization factor computed for that cytokeratin for that core. The plot from \autoref{fig:fig4}B was generated using UpSetPlot (\url{https://github.com/jnothman/UpSetPlot}). The CK heterogeneity of each core was computed by measuring the Shannon entropy of its distribution of CK-expressing cells. The homogeneity of variances assumption was met, so comparison of the CK heterogeneity over BC subtypes was made using the pairwise\_tukey function from pingouin \cite{pingouin2018}.
+
+\subsection{Aggregation of immune, stromal, and tumor cell phenotypes}
+To enable high-level comparison of cell phenotype distribution over BC subtypes (\autoref{fig:fig5}, \autoref{fig:fig6}, \autoref{fig:fig7}), cell metaclusters were aggregated into immune, stromal, and tumor groups with the following metacluster membership:
+\begin{itemize}
+    \item immune = [B cell/T cell, B cell, T cell/macrophage, T cell, macrophage]
+    \item stromal = [CD44+ endothelial, PDPN+/aSMA+ stromal, ColI+ stromal, Lamin+/Vimentin+ stromal, ColI+/PDPN+ stromal, Vimentin+ stromal, Vimentin+ endothelial]
+    \item tumor = [Ecad+/CK low, CK5+, CK5+/CK14+, myoepithelial, CK+/H3K27me3+, epithelial low, CK14+, Ecad+/CK+, proliferating, apoptotic, H3K4me3+, HER2+/CK8+, ER+, HER2 low, HER2+/CK+, ER+/PgR+]
+\end{itemize}
+
+\subsubsection{Cell phenotype density}
+The density of each of the 27 cell metaclusters in each tissue core was measured by counting the number of cells of each metacluster in the core, then dividing the count by the area of the convex hull defined by the cell centroids of the core. Tissue cores were then hierarchically clustered based on their $z$-scored cell metacluster densities using the clustermap function with Ward linkage from seaborn \cite{seaborn2020}. The homogeneity of variances assumption was not met, so comparisons of immune, stromal, and tumor cell densities over BC subtypes were made using the pairwise\_gameshowell function from pingouin \cite{pingouin2018}.
+
+\subsection{Tissue architecture analyses}
+\subsubsection{Tumor cell neighborhood interactions}
+To characterize the microenvironments of tumor cells across BC subtypes, we identified the cell metaclusters of the 10 nearest cells within \SI{65}{\micro\meter} (double the median of the minimum tumor-stromal distances across all tissue cores) of each tumor cell. Tumor cells were then split based on the BC subtype of the tissue from which they were derived, and counts for each metacluster were summed over all tumor cells such that each metacluster could be represented as a proportion of the total tumor neighborhood for each BC subtype. 
+
+To measure the extent of tumor-stromal cell interactions in each tissue core, we computed their stromal mixing scores, an adaptation of a previously described cell-cell mixing score \cite{keren2018}. To focus on cores that had substantial stromal composition, we first selected cores which are comprised of at least 25\% stromal cells and for each we defined a 10-nearest neighbor spatial graph over all cells in that core. Second, we removed edges between cells with an interaction distance greater than \SI{65}{\micro\meter}. Finally, we computed the stromal mixing score for tissue core $j$ as:
+
+\begin{equation}
+\label{eq:sm}
+\text{(stromal mixing)}_{j} = \frac{\text{(\# tumor-stromal interactions)}_{j}}{\text{(\# stromal-stromal interactions)}_{j}}.
+\end{equation}
+
+\subsubsection{Tumor graph centrality}
+To characterize tumor architecture in each tissue core, we considered the spatial interactions between tumor cells only. To account for variation in tissue core diameter (\autoref{fig:suppfig1}) which would affect the scale of spatial graph characteristics, we subsampled large diameter cores to be equal in size to the smallest diameter cores by only considering cells within the \SI{300}{\micro\meter}-radius circle drawn about the centroid of each core. With the spatially-subsampled cores, we first construct a 4-nearest neighbor spatial graph over all tumor cells in each core. Here we use $k=4$ rather than $k=10$ to construct a sparser graph since we are focusing on tumor cells only. Over this graph we compute the Wasserman-Faust closeness centrality of each cell using the closeness\_centrality function from the Python package networkx \cite{networkx2008}. The Wasserman-Faust closeness centrality of cell $u$ is computed as:
+
+\begin{equation}
+\label{eq:cc}
+C_{WF}(u) = \frac{n-1}{N-1} \frac{n - 1}{\sum_{v=1}^{n-1} d(v, u)},
+\end{equation}
+where $d(v,u)$ is the shortest-path distance between cells $v$ and $u$, $n$ is the number of cells that can reach $u$, and $N$ is the number of cells in the graph. For heatmap visualization, the distribution of tumor cell centrality for each core was max-normalized, converted into a 50-bin histogram over range = (0,1), then hierarchically clustered using the clustermap function with Jensen-Shannon distance from seaborn \cite{seaborn2020}.
+
+\subsection{Plotting and visualization}
+Unless otherwise noted, all plots were generated using Holoviews \cite{holoviews1_12_7} with either the Bokeh \cite{bokeh2020} or matplotlib \cite{mpl2007} backends. Images of CyCIF-stained tissue cores were generated using napari \cite{napari_0_3_0}.
+
+\subsection{Data availability}
+Data and code with be made available through \url{zenodo.com} and \url{gitlab.com} upon publication.
+
+\section{Acknowledgements}
+This work was supported in part by the National Cancer Institute (U54CA209988, U2CCA233280, U01 CA224012), the OHSU Center for Spatial Systems Biomedicine, and a Biomedical Innovation Program Award from the Oregon Clinical and Translational Research Institute. We acknowledge expert technical assistance by staff in the Advanced Multiscale Microscopy Shared Resource, supported by the OHSU Knight Cancer Institute (NIH P30 CA069533) and the Office of the Senior Vice President for Research. Equipment purchases included support by the OHSU Center for Spatial Systems Biomedicine, the MJ Murdock Charitable Trust, and the Collins Foundation. The resources of the Exacloud high performance computing environment developed jointly by OHSU and Intel and the technical support of the OHSU Advanced Computing Center are gratefully acknowledged. E.A.B. receives support from a scholar award provided by the ARCS Foundation Oregon.
+
+\section{Contributions}
+Conceptualization, E.A.B., J.E., G.T., K.C., J.W.G. and Y.H.C.; Methodology, E.A.B, J.E., G.T., K.C., J.W.G. and Y.H.C.; Software, E.A.B., G.T., J.E. and Y.H.C.; Validation, E.A.B., J.E., K.C., and Y.H.C.; Formal Analysis, E.A.B.; Investigation, E.A.B. and J.E.; Resources, K.C. and J.W.G.; Data Curation, E.A.B., J.E., and K.C.; Writing–Original Draft, E.A.B. and Y.H.C.; Writing–Review and Editing, E.A.B., K.C., J.W.G. and Y.H.C.; Visualization, E.A.B; Supervision, K.C., J.W.G, and Y.H.C.; Project Administration, K.C., J.W.G., Y.H.C.; Funding Acquisition, E.A.B., Y.H.C., and J.W.G.
+
+%% The Appendices part is started with the command \appendix;
+%% appendix sections are then done as normal sections
+%% \appendix
+
+%% \section{}
+%% \label{}
+
+%% References
+%%
+%% Following citation commands can be used in the body text:
+%% Usage of \cite is as follows:
+%%   \cite{key}          ==>>  [#]
+%%   \cite[chap. 2]{key} ==>>  [#, chap. 2]
+%%   \citet{key}         ==>>  Author [#]
+
+%% References with bibTeX database:
+
+% \bibliographystyle{model1-num-names}
+
+%% New version of the num-names style
+\bibliographystyle{elsarticle-num-names}
+\bibliography{sample.bib}
+
+
+\begin{figure}[p]
+\centering\includegraphics[width=\linewidth,
+                 keepaspectratio]{fig1_condensed}
+\caption{}
+\label{fig:fig1}
+\end{figure}
+
+\newpage
+
+\noindent
+\textbf{Figure 1:}  Defining single-cell phenotypes across breast cancer clinical subtypes.\\
+(A) Overview of CyCIF analysis workflow. Once TMA cores are stained by CyCIF, cells are segmented and cell mean intensities are extracted, normalized, then used to define cell phenotypes for analyses of tissue composition and architecture. Box (1) shows an example of RESTORE normalization of single-cell Ecad intensities using mutually-exclusive expression of CD68 to derive a normalization factor for Ecad. Box (2) shows benchmarking results for CPU and GPU implementations of PhenoGraph for phenotyping of simulated single-cell datasets. Compared to the legacy CPU implementation, our GPU implementation of PhenoGraph is orders of magnitude faster at scale. Error bars show standard deviation of three replicate executions. Box (3) shows \\
+(B) $t$-SNE embedding of full single-cell CyCIF dataset colored by cell phenotype metacluster. \\
+(C) Hierarchical clustering of PhenoGraph clusters and CyCIF markers. The colorscale represents the $z$-scored marker expression. The scatter plot displays how each BC subtype is composed, where point size represents the percentage of that BC subtype that is composed of that cluster. The bar plot represents that absolute number of cells belonging to each cluster and BC subtype.
+
+\begin{figure}[p]
+\centering\includegraphics[width=\linewidth,
+                 keepaspectratio]{fig2_condensed}
+\caption{}
+\label{fig:fig2}
+\end{figure}
+
+\newpage
+
+\noindent 
+\textbf{Figure 2:} Epithelial differentiation heterogeneity across BC subtypes. A) Cytokeratin (CK) heterogeneity across BC subtypes, where each box plot represents the distribution of cores from a BC subtype, and each core is summarized based on the entropy of CK+ cell types contained within it. *p=0.001. B) UpSet plot summarizing the distribution of CK+ cell types across BC subtypes, considering each CK alone (left margin) or in combination (upper margin).\\
+Cell phenotype density across TMA cores. A) Bar plot where each bar represent a TMA core, the full bar height represents its total cell density, and each colored segment represents the density of a particular cell metacluster. Bars are hierarchically clustered based on cell metacluster densities. Each bar is labeled with its corresponding subtype, stage, and grade, if a label is available. The inset brackets indicate (1) cores with abundant H3K27me3+ tumor cells, which could indicate a mechanism of HR repression in some TN and HR-/HER2+ tissues \cite{histone2016}; (2) cores with abundant infiltrating B cells (TIL-B), consistent with association found between TIL-B and high-grade, HR- BC \cite{bcell2019}; and (3) cores with relatively low immune density, consistent with the finding that HR+/HER- tissues are immunologically cold compared to TN and HER2+ tissues \cite{pdl1a2015,pdl1b2015}. B) A selection of representative TMA cores. C) The immune, stromal, and tumor densities of TMA cores from each BC subtype. Groupwise comparisons were made using Welch's ANOVA and Games-Howell post-hoc test.
+
+
+\begin{figure}[p]
+\centering\includegraphics[width=\linewidth,
+                 keepaspectratio]{fig3_condensed}
+\caption{}
+\label{fig:fig3}
+\end{figure}
+
+\newpage
+
+\noindent
+\textbf{Figure 3:} Stromal density belies tumor-stromal interaction. \\
+(A) Stacked bar plots displaying the proportion of tumor cell 10-nearest neighbors for each BC subtype. Each colored bar segment represents the proportion of tumor cell neighbors that are comprised of the corresponding cell metacluster. \\
+(B) Bar plot representation of core stromal fraction, where each bar represents a core and the height of each bar represents the proportion of all cells in that core that belong to a stromal metacluster. Cores are ordered based on increasing stromal fraction. The dotted line separates cores that have more or less than 0.25 stromal fraction. \\
+(C) Bar plot representation of core stromal mixing, where only cores with greater than 0.25 stromal fraction are shown. Cores are oredered based on increasing stromal mixing. Inset shows box plot comparing stromal mixing over BC subtype. Groupwise comparisons were made using Welch's ANOVA and Games-Howell post-hoc test. \\
+(D) Scatter plot displaying stromal density versus stromal mixing and images of representative cores with similar stromal density but different stromal mixing.\\
+Tumor architecture differentiates BC subtypes. (A) Overview of tumor architecture characterization. A spatial graph is defined over tumor cells, where each tumor cell is connected to others within a \SI{65}{\micro\meter} radius from its centroid, and the closeness centrality is then measured over this graph. Each core is then summarized as a histogram of centrality values. B) Hierarchical clustering of cores based on their tumor closeness centrality histograms. The upper and lower outset tumor graphs correspond to the right and left tissue core images in \autoref{fig:fig6}D, respectively. Scale bar in tumor graphs is \SI{150}{\micro\meter}.
+
+\newpage
+
+\begin{suppfigure}[h]
+\centering\includegraphics[width=\linewidth,
+                 keepaspectratio]{suppfig1}
+\caption{}
+\label{fig:suppfig1}
+\end{suppfigure}
+
+\newpage
+
+\noindent
+\textbf{Supplementary Figure 1:} Overview of TMA composition and CyCIF panel. \\
+(A) Core diameters split by TMA source and BC subtype.\\
+(B) Core count split by TMA source and BC subtype.\\
+(C) Cell count split by TMA source and BC subtype.\\
+(D) Composition of CyCIF panel used to stain TMAs. Markers are colored according to type.
+
+\begin{suppfigure}[p]
+\centering\includegraphics[width=\linewidth,
+                 keepaspectratio]{suppfig2}
+\caption{}
+\label{fig:suppfig2}
+\end{suppfigure}
+
+\newpage
+
+\noindent
+\textbf{Supplementary Figure 2:} Cell mean intensity normalization across TMAs. A) Example of RESTORE normalization \cite{Chang2020} of CD4 and CD68 cell mean intensities for a single TMA core. Cell mean intensities of these immune markers are plotted against the cell mean intensity of epithelial CK19, a mutually exclusive marker. Cells are partitioned into positive (blue) and negative (red) populations. Black lines represent the computed normalization factors. Cells to the right of each line are above the background intensity level for that immune marker. B) $t$-SNE embeddings of all cells using either raw (left) or normalized (right) cell mean intensities for all markers. Cells are colored according to the TMA from which they originate. A strong batch effect is observed before normalization, leading to partitioning according to TMA of origin. Following normalization, cell phenotypes shared between TMAs are co-localized. However, some TMA-specific partitioning remains due to subtype-specific marker bias within TMAs. C) $t$-SNE normalized embedding, faceted by marker, showing only cells that have a mean intensity above the normalization factor for that marker. Color scale is log-transformed normalized intensity.
+
+\begin{suppfigure}[p]
+\centering\includegraphics[width=\linewidth,
+                 keepaspectratio]{suppfig3}
+\caption{}
+\label{fig:suppfig3}
+\end{suppfigure}
+
+\newpage
+
+\noindent
+\textbf{Supplementary Figure 3:} Validation of BC cell phenotype robustness. A) Maximum Pearson's correlation between full reference cell phenotypes and those derived using PhenoGraph on cells from a random fractional sample of TMA cores. B) Phenotype matching between the full reference phenotypes and those derived from a 90$\%$-subsampled fraction of TMA cores. Phenotypes are ordered by increasing matching correlation. Matching phenotypes are linked by a line, and lines are colored to discriminate between adjacent or overlapping links. $40\_$neighbor represents the PhenoGraph cluster labels since we set $k=40$ when defining the $k$-nearest neighbor graph in the PhenoGraph routine. The colorbar indicates $z$-scored marker expression. C) The proportion of cells from each reference phenotype that correspond to the 10$\%$ of TMA cores held out from the 90$\%$-subsampled fraction from (B). Unmatched phenotypes in the full reference correspond in part to cells from held-out cores. The dotted line marks the 10$\%$ threshold. D) Maximum Pearson's correlation between full reference phenotypes and those derived using PhenoGraph on normalized mean intensities from all TMA cores, but with $\pm$20$\%$ random noise added to each marker in each core.
+
+\newpage
+
+\begin{suppfigure}[h]
+\centering\includegraphics[width=\linewidth,
+                 keepaspectratio]{suppfig4}
+\caption{}
+\label{fig:suppfig4}
+\end{suppfigure}
+
+\newpage
+
+\noindent
+\textbf{Supplementary Figure 4:} Cross-platform benchmarking of BC cell phenotypes. A) Cellular ratio highlighting compositional differences between Basel \cite{jackson_single-cell_2020} and OHSU (this work) cohorts with respect to BC subtype. B) The intersection of the IMC and CyCIF marker panels used to stain tissues from the Basel and OHSU cohorts, respectively. C) PhenoGraph cluster matching between Basel and OHSU cohorts. Using only the intersecting markers, cells from each cohort were independently clustered using PhenoGraph with the same parameterization, then cohort clusters were pairwise correlated and hierarchically clustered based on the resulting correlation structure. We identified highly-correlated clusters between cohorts, including those corresponding to epithelial, immune, stromal, endothelial, and proliferating cell populations. D) Maximum Pearson's correlation corresponding to intra-cohort cluster matches.
+
+\begin{suppfigure}[p]
+\centering\includegraphics[width=\linewidth,
+                 keepaspectratio]{suppfig5}
+\caption{}
+\label{fig:suppfig5}
+\end{suppfigure}
+
+\newpage
+
+\noindent
+\textbf{Supplementary Figure 5:} For both OHSU and Basel cohorts, tumor cells differ more between samples than immune, stromal, or endothelial cells. A) The same $t$-SNE embedding of the OHSU dataset from \autoref{fig:fig2}C, but with cells colored based on the unique tissue core from which they are derived. B) The same $t$-SNE embedding of the OHSU dataset from \autoref{fig:fig2}C, but with annotations indicating immune, stromal, endothelial, and tumor phenotypic regions. C) A $t$-SNE embedding of the Basel dataset \cite{jackson_single-cell_2020} derived using the same parameters as were used for the OHSU $t$-SNE embedding, with cells colored based on the unique tissue core from which they are derived. D) The same $t$-SNE embedding as in (C), but with annotations indicating immune, stromal, endothelial, and tumor phenotypic regions.
+
+\begin{supptable}[p]
+\centering
+\scalebox{.6}{
+\begin{tabular}{l | l l l l l l l}
+\hline
+\textbf{Reference}    & \textbf{Mutually exclusive markers}     &  &  &               &               &               &               \\
+\hline
+
+AR\_Nuclei    & CK5\_Ring     & FoxP3\_Nuclei & ColIV\_Ring &               &               &               &               \\
+aSMA\_Ring    & CK14\_Ring    & CD45\_Ring    & CK7\_Ring   & CK5\_Ring     & CK19\_Ring    &               &               \\
+CD20\_Ring    & CK14\_Ring    & CK7\_Ring     & CK5\_Ring   & CK19\_Ring    &               &               &               \\
+CD3\_Ring     & CK19\_Ring    & CK7\_Ring     & CK14\_Ring  & CK5\_Ring     & Ecad\_Ring    & CD31\_Ring    &               \\
+CD31\_Ring    & CK5\_Ring     & CK19\_Ring    & CK14\_Ring  & CK7\_Ring     & Ecad\_Ring    &               &               \\
+CD4\_Ring     & CK19\_Ring    & CK7\_Ring     & CK14\_Ring  & CK5\_Ring     & Ecad\_Ring    &               &               \\
+CD44\_Ring    & CK14\_Ring    & CK7\_Ring     & CK5\_Ring   & CK19\_Ring    & CD31\_Ring    &               &               \\
+CD45\_Ring    & CK19\_Ring    & CK7\_Ring     & CK14\_Ring  & CK5\_Ring     & CK8\_Ring     & CD31\_Ring    &               \\
+CD68\_Ring    & CK19\_Ring    & CK7\_Ring     & CD31\_Ring  & CK14\_Ring    &               &               &               \\
+CK14\_Ring    & CD31\_Ring    & CD68\_Ring    & Vim\_Ring   & aSMA\_Ring    & CD20\_Ring    & CD45\_Ring    &               \\
+CK17\_Ring    & CD31\_Ring    & CD68\_Ring    & Vim\_Ring   & ColI\_Ring    & CD45\_Ring    &               &               \\
+CK5\_Ring     & CD31\_Ring    & CD68\_Ring    & Vim\_Ring   & CD4\_Ring     & CD45\_Ring    &               &               \\
+CK19\_Ring    & CD68\_Ring    & CD4\_Ring     & CD31\_Ring  & CD45\_Ring    &               &               &               \\
+CK7\_Ring     & CD68\_Ring    & CD4\_Ring     & CD31\_Ring  & CD45\_Ring    & FoxP3\_Nuclei & PD1\_Ring     &               \\
+CK8\_Ring     & CD68\_Ring    & CD4\_Ring     & CD31\_Ring  & CD45\_Ring    &               &               &               \\
+ColI\_Ring    & CD45\_Ring    & CK19\_Ring    & CK7\_Ring   & CK14\_Ring    & CK5\_Ring     &               &               \\
+ColIV\_Ring   & CK19\_Ring    & CK7\_Ring     & CK14\_Ring  & CK5\_Ring     & CD68\_Ring    & PD1\_Ring     & FoxP3\_Nuclei \\
+cPARP\_Nuclei & Ki67\_Nuclei  & CK5\_Ring     & CD31\_Ring  & CD68\_Ring    & CK14\_Ring    &               &               \\
+Ecad\_Ring    & CD68\_Ring    & CD4\_Ring     & CD31\_Ring  &               &               &               &               \\
+ER\_Nuclei    & CD68\_Ring    & CD4\_Ring     & CD31\_Ring  & FoxP3\_Nuclei &               &               &               \\
+FoxP3\_Nuclei & CK19\_Ring    & CK7\_Ring     & CK5\_Ring   & CK14\_Ring    & CD31\_Ring    & CK8\_Ring     &               \\
+gH2AX\_Nuclei & CK8\_Ring     & CK14\_Ring    & CK5\_Ring   & CK7\_Ring     &               &               &               \\
+GRNZB\_Ring   & CK19\_Ring    & CK7\_Ring     & CK5\_Ring   & CD31\_Ring    & CK14\_Ring    & aSMA\_Ring    &               \\
+H3K27\_Nuclei & CD31\_Ring    & CD68\_Ring    & CD44\_Ring  &               &               &               &               \\
+H3K4\_Nuclei  & CD31\_Ring    & CD68\_Ring    & CD44\_Ring  & CK19\_Ring    &               &               &               \\
+HER2\_Ring    & CD68\_Ring    & CD44\_Ring    & CD31\_Ring  & Vim\_Ring     & CD4\_Ring     &               &               \\
+Ki67\_Nuclei  & cPARP\_Nuclei &               &             &               &               &               &               \\
+LamAC\_Nuclei & CD68\_Ring    & CD44\_Ring    & CK19\_Ring  & CD45\_Ring    &               &               &               \\
+LamB1\_Nuclei & CD68\_Ring    & CD44\_Ring    & CK19\_Ring  & CD45\_Ring    & CK14\_Ring    & CK7\_Ring     & CD31\_Ring    \\
+LamB2\_Nuclei & CD68\_Ring    & CD44\_Ring    & CK19\_Ring  & CD31\_Ring    & CK7\_Ring     & CK14\_Ring    &               \\
+PCNA\_Nuclei  & CK7\_Ring     & CD45\_Ring    & CD31\_Ring  & CD68\_Ring    & CK14\_Ring    & LamB2\_Nuclei &               \\
+PDPN\_Ring    & CK19\_Ring    & CK7\_Ring     & CK14\_Ring  & CK5\_Ring     & CD31\_Ring    & CD68\_Ring    &               \\
+PDPN\_Nuclei  & CK19\_Ring    & CK7\_Ring     & CK14\_Ring  & CK5\_Ring     & CD31\_Ring    & CD68\_Ring    &               \\
+PgR\_Nuclei   & CD68\_Ring    & CD4\_Ring     & CD31\_Ring  & CD20\_Ring    & aSMA\_Ring    & Vim\_Ring     &               \\
+PgR\_Ring     & CD68\_Ring    & CD4\_Ring     & CD31\_Ring  & CD20\_Ring    & aSMA\_Ring    & Vim\_Ring     &               \\
+pERK\_Ring    & GRNZB\_Ring   &               &             &               &               &               &               \\
+pERK\_Nuclei  & GRNZB\_Ring   &               &             &               &               &               &               \\
+pHH3\_Nuclei  & CD31\_Ring    & CK5\_Ring     & CK19\_Ring  & CK14\_Ring    & GRNZB\_Ring   &               &               \\
+pS6RP\_Ring   & CK19\_Ring    & CK5\_Ring     & CK7\_Ring   & CK14\_Ring    &               &               &               \\
+Vim\_Ring     & CK19\_Ring    & CK7\_Ring     & CD68\_Ring  & CD45\_Ring    & Ecad\_Ring    &               &              
+\end{tabular}}
+\caption{}
+\label{tab:mepairs}
+\end{supptable}
+
+\newpage
+
+\noindent
+\textbf{Supplementary Table 1:} Putative reference:mutually-exclusive marker pairs used for RESTORE normalization of cell mean intensities.
+
+%% Authors are advised to submit their bibtex database files. They are
+%% requested to list a bibtex style file in the manuscript if they do
+%% not want to use model1-num-names.bst.
+
+%% References without bibTeX database:
+
+% \begin{thebibliography}{00}
+
+%% \bibitem must have the following form:
+%%   \bibitem{key}...
+%%
+
+% \bibitem{}
+
+% \end{thebibliography}
+
+
+\end{document}
+
+%%
+%% End of file `elsarticle-template-1-num.tex'.
