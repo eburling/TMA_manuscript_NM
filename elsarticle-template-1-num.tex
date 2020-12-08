@@ -183,8 +183,8 @@ Fluorescently stained slides were scanned on the Zeiss AxioScan.Z1 (Zeiss, Germa
 After successful scanning, slides were soaked in 1x PBS for 10–30 minutes in a glass Coplin jar, waiting until glass coverslip slid off without agitation. Quenching solution containing 20 mM sodium hydroxide (NaOH) and 3\% hydrogen peroxide (H2O2) in 1x PBS was freshly prepared from stock solutions of 5 M NaOH and 30\% H2O2, and each slide placed in 10 ml quenching solution. Slides were quenched under incandescent light, for 30 minutes for FFPE tissue slides. Slides were then removed from chamber with forceps and washed 3 x 2 min in 1x PBS. The next round of primary antibodies was applied, diluted in blocking buffer as previously described, and imaging and quenching were repeated over ten rounds for FFPE tissue slides.
 
 
-\subsection{Cell segmentation and feature extraction}
-Cell segmentation and feature extraction were performed as previously described \cite{cmif2020}.
+\subsection{Cell segmentation and mean intensity extraction}
+Cell segmentation and mean intensity extraction were performed as previously described \cite{cmif2020}. Mean intensities for each cell were extracted from the biologically-relevant compartment for each marker, i.e. mean intensities for markers with known nuclear (cytoplasmic) localization were extracted from nuclear (cytoplasmic) segmentation masks (\autoref{tab:mepairs}). Cytoplasmic segmentation masks were computed by subtracting nuclear segmentation masks from full cell body segmentation masks.
 
 \subsection{Intensity normalization}
 Normalization factors for single-cell mean intensities were computed as previously described \cite{Chang2020} using the putative mutually-exclusive marker pairs in \autoref{tab:mepairs}. Normalization factors are computed for each pair of reference and mutually-exclusive markers, and the median of these factors is used to normalize each raw single-cell mean intensity vector for each CyCIF marker and each TMA core. Raw intensities were normalized using the equation:
@@ -377,14 +377,12 @@ Tumor architecture differentiates BC subtypes. (A) Overview of tumor architectur
 
 \noindent
 \textbf{Supplementary Figure 3:} Validation of BC cell phenotype robustness.\\
-(A) Maximum Pearson's correlation between full reference cell phenotypes and those derived using PhenoGraph on cells from a random fractional sample of TMA cores.\\
+(A) Maximum Pearson's correlations between full reference cell phenotypes and those derived using PhenoGraph on cells from a random fractional sample of TMA cores, iterated five times at each fraction level. \\
 (B) Phenotype matching between the full reference phenotypes and those derived from a 90$\%$-subsampled fraction of TMA cores. Phenotypes are ordered by increasing matching correlation. Matching phenotypes are linked by a line, and lines are colored to discriminate between adjacent or overlapping links. $40\_$neighbor represents the PhenoGraph cluster labels since we set $k=40$ when defining the $k$-nearest neighbor graph in the PhenoGraph routine. The colorbar indicates $z$-scored marker expression.\\
 (C) The proportion of cells from each reference phenotype that correspond to the 10$\%$ of TMA cores held out from the 90$\%$-subsampled fraction from (B). Unmatched phenotypes in the full reference correspond in part to cells from held-out cores. The dotted line marks the 10$\%$ threshold.\\
 (D) Maximum Pearson's correlation between full reference phenotypes and those derived using PhenoGraph on normalized mean intensities from all TMA cores, but with $\pm$20$\%$ random noise added to each marker in each core.
 
-\newpage
-
-\begin{suppfigure}[h]
+\begin{suppfigure}[p]
 \centering\includegraphics[width=\linewidth,
                  keepaspectratio]{suppfig4}
 \caption{}
@@ -418,16 +416,16 @@ Tumor architecture differentiates BC subtypes. (A) Overview of tumor architectur
 
 \begin{supptable}[p]
 \centering
-\scalebox{.6}{
+\resizebox{\textwidth}{!}{%
+%\scalebox{.6}{
 \begin{tabular}{l | l l l l l l l}
 \hline
-\textbf{Reference}    & \textbf{Mutually exclusive markers}     &  &  &               &               &               &               \\
+\textbf{Reference} & \textbf{ME markers} &  &  &  &  &  &\\
 \hline
 
 AR\_Nuclei    & CK5\_Ring     & FoxP3\_Nuclei & ColIV\_Ring &               &               &               &               \\
 aSMA\_Ring    & CK14\_Ring    & CD45\_Ring    & CK7\_Ring   & CK5\_Ring     & CK19\_Ring    &               &               \\
 CD20\_Ring    & CK14\_Ring    & CK7\_Ring     & CK5\_Ring   & CK19\_Ring    &               &               &               \\
-CD3\_Ring     & CK19\_Ring    & CK7\_Ring     & CK14\_Ring  & CK5\_Ring     & Ecad\_Ring    & CD31\_Ring    &               \\
 CD31\_Ring    & CK5\_Ring     & CK19\_Ring    & CK14\_Ring  & CK7\_Ring     & Ecad\_Ring    &               &               \\
 CD4\_Ring     & CK19\_Ring    & CK7\_Ring     & CK14\_Ring  & CK5\_Ring     & Ecad\_Ring    &               &               \\
 CD44\_Ring    & CK14\_Ring    & CK7\_Ring     & CK5\_Ring   & CK19\_Ring    & CD31\_Ring    &               &               \\
@@ -456,15 +454,11 @@ LamB1\_Nuclei & CD68\_Ring    & CD44\_Ring    & CK19\_Ring  & CD45\_Ring    & CK
 LamB2\_Nuclei & CD68\_Ring    & CD44\_Ring    & CK19\_Ring  & CD31\_Ring    & CK7\_Ring     & CK14\_Ring    &               \\
 PCNA\_Nuclei  & CK7\_Ring     & CD45\_Ring    & CD31\_Ring  & CD68\_Ring    & CK14\_Ring    & LamB2\_Nuclei &               \\
 PDPN\_Ring    & CK19\_Ring    & CK7\_Ring     & CK14\_Ring  & CK5\_Ring     & CD31\_Ring    & CD68\_Ring    &               \\
-PDPN\_Nuclei  & CK19\_Ring    & CK7\_Ring     & CK14\_Ring  & CK5\_Ring     & CD31\_Ring    & CD68\_Ring    &               \\
 PgR\_Nuclei   & CD68\_Ring    & CD4\_Ring     & CD31\_Ring  & CD20\_Ring    & aSMA\_Ring    & Vim\_Ring     &               \\
-PgR\_Ring     & CD68\_Ring    & CD4\_Ring     & CD31\_Ring  & CD20\_Ring    & aSMA\_Ring    & Vim\_Ring     &               \\
-pERK\_Ring    & GRNZB\_Ring   &               &             &               &               &               &               \\
-pERK\_Nuclei  & GRNZB\_Ring   &               &             &               &               &               &               \\
 pHH3\_Nuclei  & CD31\_Ring    & CK5\_Ring     & CK19\_Ring  & CK14\_Ring    & GRNZB\_Ring   &               &               \\
 pS6RP\_Ring   & CK19\_Ring    & CK5\_Ring     & CK7\_Ring   & CK14\_Ring    &               &               &               \\
 Vim\_Ring     & CK19\_Ring    & CK7\_Ring     & CD68\_Ring  & CD45\_Ring    & Ecad\_Ring    &               &              
-\end{tabular}}
+\end{tabular}}%}
 \caption{}
 \label{tab:mepairs}
 \end{supptable}
@@ -472,7 +466,7 @@ Vim\_Ring     & CK19\_Ring    & CK7\_Ring     & CD68\_Ring  & CD45\_Ring    & Ec
 \newpage
 
 \noindent
-\textbf{Supplementary Table 1:} Putative reference:mutually-exclusive marker pairs used for RESTORE normalization of cell mean intensities.
+\textbf{Supplementary Table 1:} Putative reference:mutually-exclusive (ME) marker pairs used for RESTORE normalization of cell mean intensities. Each marker name indicates from which compartment its mean intensity was extracted. "Ring" indicates that a marker's intensity was extracted from the ring-shaped cytoplasmic segmentation masks derived by subtracting the "Nuclei" segmentation masks from "Cell" segmentation masks.
 
 %% Authors are advised to submit their bibtex database files. They are
 %% requested to list a bibtex style file in the manuscript if they do
