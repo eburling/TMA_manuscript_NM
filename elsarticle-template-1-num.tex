@@ -126,8 +126,7 @@
 \address{$^{3}$Knight Cancer Institute, Oregon Health and Science University, Portland, OR, USA}
 \begin{abstract}
 %% Text of abstract
-The emergence of megascale single-cell multiplex tissue imaging (MTI) datasets necessitates reproducible, scalable, and robust tools for cell phenotyping and spatial analysis. We developed open-source, 
-graphics processing unit (GPU)-accelerated tools for intensity normalization, phenotyping, and microenvironment characterization. We deploy the toolkit on a human breast cancer (BC) tissue microarray stained by cyclic immunofluorescence and benchmark our cell phenotypes against a published MTI dataset. Finally, we demonstrate an integrative analysis revealing BC subtype-specific features.
+The emergence of megascale single-cell multiplex tissue imaging (MTI) datasets necessitates reproducible, scalable, and robust tools for cell phenotyping and spatial analysis. We developed open-source, graphics processing unit (GPU)-accelerated tools for intensity normalization, phenotyping, and microenvironment characterization. We deploy the toolkit on a human breast cancer (BC) tissue microarray stained by cyclic immunofluorescence and benchmark our cell phenotypes against a published MTI dataset. Finally, we demonstrate an integrative analysis revealing BC subtype-specific features.
 \end{abstract}
 
 \begin{keyword}
@@ -172,7 +171,7 @@ This work is motivated by an understanding that the spatial context of the tumor
 
 \section{METHODS}
 \subsection{Acquisition of breast cancer tissue microarrays (TMAs)}
-The tissues used in this study are a compilation of multiple TMAs: BR1201a-SG48 (US Biomax Inc., \url{https://www.biomax.us/BR1201at}), BR1506-A019 (US Biomax Inc., \url{https://www.biomax.us/tissue-arrays/Breast/BR1506}), Her2B-K154 (US Biomax Inc., \url{https://www.biomax.us/tissue-arrays/Breast/Her2B}), and the TransATAC TMAs T-ATAC-4A-Left and T-ATAC-4A-Right \cite{tatac2008}.
+The tissues used in this study are a compilation of multiple TMAs: BR1201a-SG48 (US Biomax Inc., \url{https://www.biomax.us/BR1201at}), BR1506-A019 (US Biomax Inc., \url{https://www.biomax.us/tissue-arrays/Breast/BR1506}), Her2B-K154 (US Biomax Inc., \url{https://www.biomax.us/tissue-arrays/Breast/Her2B}), and the TransATAC TMAs T-ATAC-4A-Left and T-ATAC-4A-Right \cite{tatac2008}. All tissues that were successfully stained and imaged were included in the study, representing 180 tissue cores from 128 patients.
 
 \subsection{Cyclic immunofluorescence (CyCIF) staining of tissues}
 \subsubsection{Tissue preparation}
@@ -217,7 +216,7 @@ To enable visualization, the full 35-feature single-cell dataset was reduced to 
 The imaging mass cytometry (IMC) dataset \cite{jackson_single-cell_2020} used for our cell phenotype validation experiment was retrieved from \url{https://zenodo.org/record/3518284}. To make a fair comparison between the OHSU (CyCIF) and Basel (IMC) datasets, we independently ran PhenoGraph on each using the same parameters ($k$=40, Louvain partitioning) and only the overlapping features between IMC and CyCIF stain panels (\autoref{fig:suppfig4}B). The phenotypes derived from each platform were then cross-correlated to identify inter-platform phenotype matches. Using the clustermap function from seaborn \cite{seaborn2020}, the cross-correlation matrix was then hierarchically clustered with Ward linkage and used to sort the matching clusters between the two cohort heatmaps.
 
 \subsection{Statistical analyses}
-For the groupwise comparisons in \autoref{fig:fig2}A, \autoref{fig:fig2}E, \autoref{fig:fig3}B, we first tested the assumption of homogeneity of variances using the bartlett function from the Python package SciPy \cite{scipy2020}. When the assumption was (not) met, we made groupwise comparisons using one-way ANOVA with Tukey-HSD post-hoc test using the pairwise\_tukey (Welch's ANOVA with Games-Howell post-hoc test using the pairwise\_gameshowell) function from the Python package pingouin \cite{pingouin2018}.
+For the groupwise comparisons in \autoref{fig:fig2}A, \autoref{fig:fig2}E, \autoref{fig:fig3}B, we first tested the assumption of homogeneity of variances using the bartlett function from the Python package SciPy \cite{scipy2020}. When the assumption was (not) met, we made groupwise comparisons using one-way ANOVA with Tukey-HSD post-hoc test using the pairwise\_tukey (one-way Welch ANOVA with Games-Howell post-hoc test using the pairwise\_gameshowell) function from the Python package pingouin \cite{pingouin2018}.
 
 \subsection{Tissue composition analyses}
 \subsubsection{Epithelial differentiation heterogeneity}
@@ -316,11 +315,11 @@ Conceptualization, E.A.B., J.E., G.T., K.C., J.W.G. and Y.H.C.; Methodology, E.A
 
 \noindent 
 \textbf{Figure 2: Breast cancer subtypes are differentiated by single-cell composition.} \\
-(A) Epithelial differentiation heterogeneity across BC subtypes. Box plot displaying cytokeratin (CK) expression heterogeneity across BC subtypes, where each box represents the distribution of tissue cores from a BC subtype, and each core is summarized based on the entropy of the distribution of CK+ cell types contained within it. Groupwise comparisons were made using one-way ANOVA with pairwise Tukey post-hoc test. *p$<$0.001 for all TN comparisons with other the BC subtypes.\\
+(A) Epithelial differentiation heterogeneity across BC subtypes. Box plot displaying cytokeratin (CK) expression heterogeneity across BC subtypes, where each box represents the distribution of tissue cores from a BC subtype, and each core is summarized based on the entropy of the distribution of CK+ cell types contained within it. Groupwise comparisons were made using one-way ANOVA with pairwise Tukey post-hoc test (TN, $n=47$; HR+HER2-, $n=52$; HR-HER2+, $n=53$; HR+HER2+, $n=28$). *$P<0.001$ for all TN comparisons with other BC subtypes.\\ %(TN to HR+HER2-, $t$-stat $=4.37$, Hedges effect size $=0.87$; TN to HR-HER2+, $t$-stat $=5.74$, Hedges effect size $=1.14$; TN to HR+HER2+, $t$-stat $=6.01$, Hedges effect size $=1.42$).\\
 (B) UpSet plot summarizing the distribution of CK+ cell types across BC subtypes, considering each CK alone (left margin) or in combination (upper margin).\\
 (C) Cell phenotype density across tissue cores. Bar plot where each bar represents a TMA core, the full bar height represents its total cell density, and each colored segment represents the density of a particular cell metacluster. Bars are hierarchically clustered based on cell metacluster densities. Each bar is labeled with its corresponding subtype, stage, and grade, if a label is available. The inset brackets indicate (1) cores with abundant H3K27me3+ tumor cells, which could indicate a mechanism of HR repression in some TN and HR-/HER2+ tissues \cite{histone2016}; (2) cores with abundant infiltrating B cells (TIL-B), consistent with association found between TIL-B and high-grade, HR- BC \cite{bcell2019}; and (3) cores with relatively low immune density, consistent with the finding that HR+/HER- tissues are immunologically cold compared to TN and HER2+ tissues \cite{pdl1a2015,pdl1b2015}.\\
 (D) A selection of representative tissue cores.\\
-(E) The immune, stromal, and tumor densities of tissue cores from each BC subtype. Groupwise comparisons were made using Welch's ANOVA and Games-Howell post-hoc test. *p=0.034, **p=0.035, ***p=0.079.
+(E) The immune, stromal, and tumor densities of tissue cores from each BC subtype. Groupwise comparisons were made using one-way Welch ANOVA and Games-Howell post-hoc test. *$P=0.034$, **$P=0.035$, ***$P=0.079$ (TN, $n=47$; HR+HER2-, $n=52$; HR-HER2+, $n=53$; HR+HER2+, $n=28$).
 
 
 \begin{figure}[p]
@@ -335,7 +334,7 @@ Conceptualization, E.A.B., J.E., G.T., K.C., J.W.G. and Y.H.C.; Methodology, E.A
 \noindent
 \textbf{Figure 3:} Breast cancer cellular composition belies tumor-stromal interaction and tumor architecture. \\
 (A) Stacked bar plots displaying the proportion of tumor cell 10-nearest neighbors for each BC subtype. Each colored bar segment represents the proportion of tumor cell neighbors that are comprised of the corresponding cell metacluster. \\
-(B) Bar plot representation of core stromal mixing, where only cores with greater than 0.25 stromal fraction are shown. Cores are oredered based on increasing stromal mixing. Inset shows box plot comparing stromal mixing over BC subtype. Groupwise comparisons were made using Welch's ANOVA and Games-Howell post-hoc test. *p$<$0.001 for all HR+HER2- comparisons. \\
+(B) Bar plot representation of tissue core stromal mixing, where only cores with greater than 0.25 stromal fraction are shown. Cores are oredered based on increasing stromal mixing. Inset shows box plot comparing stromal mixing over BC subtype. Groupwise comparisons were made using one-way Welch ANOVA and Games-Howell post-hoc test. *$P<$0.001 for all HR+HER2- comparisons (TN, $n=47$; HR+HER2-, $n=52$; HR-HER2+, $n=53$; HR+HER2+, $n=28$). \\
 (C) Scatter plot displaying stromal density versus stromal mixing and images of representative cores with similar stromal density but different stromal mixing.\\
 (D) Overview of tumor architecture characterization. A spatial graph is defined over tumor cells, where each tumor cell is connected to others within a \SI{65}{\micro\meter} radius from its centroid, and the closeness centrality is then measured over this graph. Each core is then summarized as a histogram of centrality values. \\
 (E) Hierarchical clustering of cores based on their tumor closeness centrality histograms. The upper and lower outset tumor graphs correspond to the right and left tissue core images in \autoref{fig:fig3}C, respectively. Scale bar in tumor graphs is \SI{150}{\micro\meter}.
